@@ -89,7 +89,8 @@ export default function Hero() {
 
       <img
         src="/images/hiking.jpg"
-        alt="Jason Bowman hiking near Lake Louise"
+        alt="Jason Bowman hiking in Banff National Park"
+        title="Eating applesauce from a bag on a hike with my partner in Banff National Park, Canada"
         className="w-full max-w-xs rounded-2xl border border-line shadow-lg"
       />
 

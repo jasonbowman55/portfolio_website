@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import BackLink from '../../components/ui/BackLink'
-import Content from './content.mdx'
 
 const challenges = [
   {
@@ -57,10 +56,6 @@ export default function AnnualChallengePage() {
             </div>
           </Link>
         ))}
-      </div>
-
-      <div className="prose-field mt-16 max-w-3xl border-t border-line pt-10">
-        <Content />
       </div>
     </div>
   )
