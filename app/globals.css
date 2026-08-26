@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.75;
+}
+
+::selection {
+  background: rgba(201, 137, 93, 0.25);
+  color: #f2ebe0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #17130f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #493c2a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c9895d;
+}
+
+/* Links */
+a {
+  color: #c9895d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #dba077;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #f2ebe0;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+/* ---------------------------------------------------------------- */
+/* Shared, quiet utilities                                           */
+/* ---------------------------------------------------------------- */
+
+/* A plain warm section background, no texture */
+.grid-field {
+  background-color: #17130f;
+}
+
+/* Soft hover lift for cards/images — no brackets, no hard edges */
+.blueprint-frame {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blueprint-frame:hover {
+  box-shadow: 0 12px 32px -16px rgba(0, 0, 0, 0.5);
+}
+
+/* Small quiet label above a heading, e.g. "Projects" */
+.eyebrow {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: #8c8071;
+  font-weight: 500;
+}
+
+/* Long-form article typography, used on essay / lab-report pages.
+   Capped so paragraph text stays a comfortable reading width even when the
+   page around it is wide — pass an explicit max-w-* class to override. */
+.prose-field {
+  color: #b8ac9c;
+  max-width: 42rem;
+}
+
+.prose-field h2 {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: 1.65rem;
+  margin: 2.75rem 0 1rem;
+  color: #f2ebe0;
+}
+
+.prose-field h3 {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin: 2rem 0 0.75rem;
+  color: #f2ebe0;
+}
+
+.prose-field p {
+  margin-bottom: 1.2rem;
+}
+
+.prose-field ul,
+.prose-field ol {
+  margin: 0 0 1.2rem 1.4rem;
+}
+
+.prose-field li {
+  margin-bottom: 0.4rem;
+}
+
+.prose-field img {
+  border-radius: 0.5rem;
+  border: 1px solid #33291d;
+}
+
+.prose-field strong {
+  color: #f2ebe0;
+  font-weight: 600;
+}
+
+.prose-field blockquote {
+  border-left: 2px solid #c9895d;
+  padding-left: 1.25rem;
+  color: #a89a89;
+  font-style: italic;
+  margin: 1.75rem 0;
+}

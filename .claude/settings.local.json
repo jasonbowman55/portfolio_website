@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(dir /B C:UsersJason BowmanDocumentsGitHubpersonal_gitBlogClaudejs)",
+      "Bash(npm run dev:*)"
+    ]
+  }
+}

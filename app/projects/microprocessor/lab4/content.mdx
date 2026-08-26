@@ -1,0 +1,77 @@
+## Intro & Design Approach
+
+This lab utilized an SM231508-1 8Ω speaker, and an STM32 Nucleo-32 board with an onboard STM32L432KC MCU, in order to play the songs "Für Elise" and "Happy Birthday." This was done without using CMSIS, instead using memory-mapped I/O and accessing specific memory addresses and peripherals in order to initialize and run the code on the MCU.
+
+## Design
+
+### Hardware
+
+A simple audio amplifier (LM386) chip was used to drive an 8-ohm speaker. The amplifier was powered by a 5V supply, and the input signal was a 3.3V PWM signal. A 103 4E potentiometer was also included in the circuit to function as a volume control interface.
+
+![Circuit schematic](/images/microprocessor/lab4/circuit_schematic.jpeg)
+
+### File Structure
+
+All files used in the project, including the specifically generated Segger project files, are stored in the same local directory. Within the Segger project, the file structure is organized as shown below. Green lines indicate `#include` directives in the `main.c` file, while the black arrows show the correlation between header files and their respective `.c` files.
+
+![Segger project file mapping](/images/microprocessor/lab4/file_map.jpeg)
+
+### High Level Software Description
+
+The Multi-Speed Internal (MSI) clock, combined with a PLL configuration, was used to achieve the desired system clock (SYSCLK) speed. SYSCLK was routed to the GPIOA and TIM16 peripherals. TIM16, a built-in timer, was used for PWM generation to drive the speaker. A simple counter function, implemented in `main.c`, operated based on SYSCLK. The key parameters for setting the output frequency and note duration were TIM16's internal registers: the Auto-Reload Register (ARR) and the prescaler (PSC), which worked together with the counter variable to achieve the desired output.
+
+### System Clock Configuration
+
+As mentioned, the MSI onboard clock was used as an input to the PLL configuration, which allows for precise SYSCLK speed control. The PLL uses two divisors (M and R) and one multiplier (N) to achieve this function. With the MSI frequency at the default frequency of 4 MHz and setting M=1, N=8, and R=4, we can achieve the desired SYSCLK speed of 8 MHz.
+
+![Full MCU clock tree](/images/microprocessor/lab4/clk_tree_full.jpeg)
+
+![Full MCU clock tree and PLL module](/images/microprocessor/lab4/clk_tree_pll.jpeg)
+
+### TIM16 & Frequency Generation
+
+TIM16 is the peripheral used to produce the desired PWM signal frequency. First, the prescaler (PSC) was set to 255 to bring the TIM16 counter frequency closer to the desired range. The relationship between the output frequency and the ARR register is:
+
+`Freq = SYSCLK / (PSC + 1) × 1 / (ARR + 1)`
+
+![TIM16 Block Diagram](/images/microprocessor/lab4/TIM16_diagram.jpeg)
+
+Freq represents the desired PWM frequency, and ARR is the 16-bit register used to control it. Solving for ARR gives `ARR = SYSCLK / (Freq × (PSC + 1)) − 1`, which with a PSC of 255 simplifies to `ARR = 31250 / Freq − 1`. This last form was implemented in `main.c` to control the output frequency.
+
+### Frequency & Duration Analysis
+
+To demonstrate the accuracy of the PWM output frequencies, the ARR value was calculated for a 659 Hz frequency, corresponding to a note from Für Elise: `ARR = 31250 / 659 − 1 = 46.42`. The value of ARR is internally rounded to the nearest integer, resulting in ARR = 46. Substituting that back in gives an actual output frequency of `Freq = 31250 / (46 + 1) = 664.89 Hz`, a percent error of about 0.89% — more than sufficient for the accuracy required in this application.
+
+The minimum achievable frequency corresponds to the maximum 16-bit ARR value (65535), giving `0.48 Hz`. The maximum frequency corresponds to the smallest ARR value (1), giving `15.625 kHz`.
+
+The only thing that affects the accuracy of the note duration is the delay constant declared in software, which has already been determined to be accurate. Duration is related to ARR by `ms = ARR / 100`, giving a maximum duration of about 655.35 ms and a minimum duration of about 0.01 ms.
+
+### Debugging
+
+The built-in debugger in Segger was used to directly inspect register values to validate the design. By stepping through the execution one step at a time, the register values of interest could be monitored to ensure they were functioning as expected.
+
+## Video of Both Songs
+
+<figure>
+  <figcaption><strong>Für Elise</strong></figcaption>
+  <video width="600" controls>
+    <source src="/videos/microprocessor/fur_elise.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</figure>
+
+<figure>
+  <figcaption><strong>Happy Birthday</strong></figcaption>
+  <video width="600" controls>
+    <source src="/videos/microprocessor/happy_birthday.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</figure>
+
+## Results
+
+This lab resulted in a working audio system, including the ability to play "Für Elise" and "Happy Birthday." It effectively utilized the TIM16 and GPIO peripherals in the MCU, accurately playing the notes for each song with correct timing. This lab took me about 15 hours to complete.
+
+## Reflection
+
+This lab was the first time I had to delve into such extensive documentation — the reference manual for the STM32L432KC MCU chip. Through this experience, I began to gain confidence in my ability to decipher datasheets and reference manuals in a useful way. I started to understand the format and the reasoning behind why developers created these manuals the way they did. I had fun during this lab and found it very interesting that when working at such a low level in the MCU, you can see the true speed at which these components operate. This sparked new ideas for future projects in my mind, and I am glad to have this skill set in my toolbox for both academic and personal project reasons.

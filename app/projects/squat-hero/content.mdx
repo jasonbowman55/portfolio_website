@@ -1,0 +1,10 @@
+The capstone project for E155: Microprocessor Design & Application, built with [Ket Hollingsworth](https://www.linkedin.com/in/ket-hollingsworth/). Squat Hero tracks squat depth and form in real time using an ARM STM32 Nucleo-32 MCU for sensor integration and processing, Adafruit LSM6DSO32 IMU sensors for position tracking, and a Lattice iCE40 FPGA driving real-time VGA display output.
+
+The MCU and FPGA communicate over a custom protocol to fuse IMU readings into a live depth estimate, with the FPGA handling display timing so the feedback loop stays fast enough to be useful mid-set.
+
+## The System
+
+- ARM STM32 Nucleo-32 (STM32L432KC) — sensor polling, fusion, control logic
+- Adafruit LSM6DSO32 IMUs — chest, thigh, and shin position tracking
+- Lattice iCE40 UP5K FPGA — real-time VGA display driving in SystemVerilog
+- Custom mounting to keep the IMUs rigid relative to the lifter

@@ -1,0 +1,26 @@
+A final project with [Jordan Stone](https://www.linkedin.com/in/jordan-stone-844a4b1b8/) in [E178: High-Power Rocketry](https://pages.hmc.edu/spjut/AdvRoc/index.md.html), taught by [Professor Erik Spjut](https://www.hmc.edu/about/news/experts/erik-spjut/). The course covered modeling and designing a stable, reliable high-power rocket — construction techniques like basic machining and composite epoxies for joints and fillets, plus flight data analysis and sensor verification. For our final project, we took it further and implemented active roll control with live data acquisition and a PID feedback loop.
+
+## Project Ideation
+
+The idea was sparked by a previous attempt called "Gyro Stabilized," where a team tried to passively stabilize rocket rotation using inherent gyroscopic torque. It didn't work well — the project notes say it "got the gyro to spin up, but it didn't seem to have much effect." Given our prior experience with control systems, embedded electronics, and mechanical design, we saw a clear path to an *active* control system instead: a brushless drone motor with a steel flywheel attached.
+
+## Project Design
+
+All design and implementation — apart from the build instructions and the pre-installed Teensy 4.0 MCU provided by Prof. Spjut — was done by Jordan and me. The mechanical design centered on a support structure to hold all the electronics inside the rocket's avionics bay. The digital design handled communication between an Adafruit QT Py and the Teensy 4.0, plus logging to an SD card. The control system used proven calibration techniques to keep things simple and reliable.
+
+- UART communication between the Teensy 4.0 and the Arduino QT Py
+- Real-time data logging to an SD card for post-flight analysis
+- Magnetometer integration for orientation sensing
+- A PID feedback loop tuned for roll damping, with fail-safes for safe operation
+
+Fitting everything into the avionics bay required a small 1.5&Prime; extension to the original MadCow rocket build. Past that, most of the mechanical effort went into the avionics support structure itself.
+
+## Launch Day
+
+![J&J rocket, Jordan and Jason](/images/hpr/rocket_long.jpeg)
+
+> This page is still catching up to the project — launch results, flight data, and final performance numbers are coming as I get through the post-flight analysis.
+
+## Course Context
+
+E178 covered rocket stability analysis and simulation, high-power construction techniques, composite epoxy applications, data acquisition systems, flight data analysis, and safety protocols for high-power rocketry.

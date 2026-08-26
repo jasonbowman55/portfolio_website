@@ -1,0 +1,34 @@
+## Intro & Design Approach
+
+In this lab, a design was implemented on an FPGA to time-multiplex between two 7-segment displays, each showing separate values based on its own 4-bit binary input. Two simple transistor circuits were used to alternate between the respective 7-segment displays. Additionally, the design required the sum of these two 4-bit inputs to be displayed in binary on a 5-bit line of LEDs.
+
+The design process began with a block diagram, where I created a top module and two submodules:
+
+- **seven_seg_decoder:** decodes inputs to 7-seg pin assignments
+- **bin_disp_decoder:** sums input values and writes that sum in binary to the LEDs
+
+I then created a circuit schematic, which allowed me to visualize physical pin assignments and accurately represent those in my SystemVerilog. A waveform was then used to simulate, debug, and validate system functions.
+
+## Block Diagram
+
+In SystemVerilog, when programming the UPduino FPGA, a counter was used in conjunction with the on-board high-speed oscillator (HSOSC) to generate an internal clock signal named `int_osc`. The `int_osc` influenced the counter variable, and was then used to time-multiplex between the displays and manage other internal logic. Combinational logic was subsequently implemented to handle the 7-segment display outputs. A simple assign statement was used to generate the LED binary outputs.
+
+![This block diagram outlines the SystemVerilog modules used in lab 2](/images/microprocessor/lab2/lab2_block_diagram.jpeg)
+
+## Circuit Schematic
+
+![This circuit schematic shows the hardware connections, related pins, and corresponding SystemVerilog signals](/images/microprocessor/lab2/lab2_circuit_diagram.jpeg)
+
+## Simulation
+
+During the design process, waveform generation was performed to debug and verify the expected functionality. As shown in the figure below, with both right and left inputs, the output `seg` correctly provides the decoded signal for the corresponding 7-segment display. The `osc` signal, which toggles the time-multiplexing behavior, captures the output `seg` for each display, demonstrating that it accurately reflects the expected decoded input values. We can also observe that the 5-bit summation represented as `led` correctly gets the value of `right + left`. This validates the functionality of the system.
+
+![Waveform displaying accurate time-multiplexed functionality](/images/microprocessor/lab2/wave.jpeg)
+
+## Results & Discussion
+
+This lab resulted in a working time-multiplexed dual 7-segment display that correctly displays hexadecimal digits 1–F independently, clearly, and without bleeding. As well as a functioning 5-bit LED display showing the binary combination of the two 4-bit inputs.
+
+The counter variable, incremented by the internal clock signal (`int_osc`), controls the oscillation speed between the two different 7-segment displays using a selector. While this provides adequate control for the current application, developing a more precise counter mechanism could further optimize performance and improve accuracy in future work.
+
+This lab took approximately 13 hours to complete. Significant challenges were encountered early in the implementation stage. Utilizing waveforms and testbenches earlier on would have helped, and I will do so going forward.
