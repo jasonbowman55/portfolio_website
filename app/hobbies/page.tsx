@@ -21,11 +21,7 @@ const hobbies = [
 export default function HobbiesPage() {
   return (
     <div className="mx-auto max-w-[100rem] px-4 py-16">
-      <PageHeader
-        eyebrow="Off the Clock"
-        title="Hobbies & Personal Interests"
-        subtitle="Engineering is one part of who I am. These pages are the other part — the pursuits that keep me grounded, challenged, and connected to the world outside the lab."
-      />
+      <PageHeader title="Hobbies & Personal Interests" />
 
       <div className="grid gap-6 sm:grid-cols-2">
         {hobbies.map((hobby) => (
@@ -54,21 +50,6 @@ export default function HobbiesPage() {
             </div>
           </Link>
         ))}
-      </div>
-
-      <div className="prose-field mt-16 max-w-3xl border-t border-line pt-10">
-        <h2>Why Hobbies Matter</h2>
-        <p>
-          These pursuits aren't separate from my engineering work — they inform it. The discipline
-          from athletics, the problem-solving from physical challenges, and the teamwork from
-          collaborative adventures all translate directly into how I approach technical problems.
-          They remind me that engineering, at its core, is about understanding systems, adapting
-          to constraints, and pushing beyond what seems possible.
-        </p>
-        <p>
-          Whether I'm tuning a PID controller or pushing through mile 100 on a bike, the mindset
-          is the same: break down the problem, trust the process, and keep moving forward.
-        </p>
       </div>
     </div>
   )
