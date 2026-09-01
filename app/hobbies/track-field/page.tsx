@@ -21,8 +21,8 @@ export default function TrackFieldPage() {
 
       <p className="eyebrow mb-4">A Decade in Track & Field</p>
       <h1 className="font-display text-4xl font-semibold text-ink md:text-5xl">Sports & Athletics</h1>
-      <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-copper">
-        <span className="h-1.5 w-1.5 rounded-full bg-copper" />
+      <p className="mt-3 inline-flex items-center gap-2 text-base font-medium text-red-500">
+        <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
         Page in progress — more photos and videos coming soon
       </p>
 
