@@ -20,7 +20,7 @@ export default function FourByFourByFortyEightPage() {
         href="https://youtu.be/OFPg18zu_NY?si=sebGKcoNgXRix0mu&t=1"
         target="_blank"
         rel="noopener noreferrer"
-        className="group blueprint-frame relative mt-10 block max-w-md overflow-hidden rounded-lg border border-line"
+        className="group blueprint-frame relative mx-auto mt-10 block max-w-3xl overflow-hidden rounded-lg border border-line"
       >
         <img
           src="/images/hobbies/collin_ket_running.jpeg"
