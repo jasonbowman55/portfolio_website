@@ -1,7 +1,29 @@
 import BackLink from '../../components/ui/BackLink'
 import Tag from '../../components/ui/Tag'
-import LinkPreview from '../../components/ui/LinkPreview'
+import TeamGrid from '../../components/TeamGrid'
+import DocumentGrid from '../../components/DocumentGrid'
 import Content from './content.mdx'
+
+const team = [
+  { name: 'Jason Bowman (me)', link: 'https://www.linkedin.com/in/jasonbbowman/', image: '/images/headshot.jpeg' },
+  { name: 'Jordan Stone', link: 'https://www.linkedin.com/in/jordan-stone-844a4b1b8/' },
+  { name: 'Erik Spjut', role: 'Professor', link: 'https://www.hmc.edu/about/news/experts/erik-spjut/' },
+]
+
+const documents = [
+  {
+    title: 'Final Presentation',
+    description: 'Slides covering ideation, design, and results.',
+    href: 'https://docs.google.com/presentation/d/1_0Llwfu8Jsjl5NIC-cJGMTuoJK3M8C1EhikOfAFxz1I/edit?slide=id.g2678e73fc13_0_3598#slide=id.g2678e73fc13_0_3598',
+    cta: 'View presentation →',
+  },
+  {
+    title: 'Final Report',
+    description: 'Full technical writeup of the project.',
+    href: 'https://docs.google.com/document/d/1vgHfELuwVxcW2uiOUBaa0Wkof7DsADcb6Q87iQl9To8/edit?tab=t.0',
+    cta: 'View report →',
+  },
+]
 
 export default function HighPowerRocketryPage() {
   return (
@@ -32,24 +54,18 @@ export default function HighPowerRocketryPage() {
         <Content />
       </div>
 
+      <h2 className="mt-14 font-display text-2xl font-semibold text-ink">The Team</h2>
+      <TeamGrid members={team} />
+
       <h2 className="mt-14 font-display text-2xl font-semibold text-ink">Final Presentation &amp; Report</h2>
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <LinkPreview
-          href="https://docs.google.com/presentation/d/1_0Llwfu8Jsjl5NIC-cJGMTuoJK3M8C1EhikOfAFxz1I/edit?slide=id.g2678e73fc13_0_3598#slide=id.g2678e73fc13_0_3598"
-          className="block rounded-lg border border-line bg-surface p-6 transition hover:border-signal/50"
-        >
-          <h3 className="font-display font-semibold text-ink">Final Presentation</h3>
-          <p className="mt-2 text-sm text-body">Slides covering ideation, design, and results.</p>
-          <span className="mt-3 inline-block text-xs text-signal">View presentation →</span>
-        </LinkPreview>
-        <LinkPreview
-          href="https://docs.google.com/document/d/1vgHfELuwVxcW2uiOUBaa0Wkof7DsADcb6Q87iQl9To8/edit?tab=t.0"
-          className="block rounded-lg border border-line bg-surface p-6 transition hover:border-signal/50"
-        >
-          <h3 className="font-display font-semibold text-ink">Final Report</h3>
-          <p className="mt-2 text-sm text-body">Full technical writeup of the project.</p>
-          <span className="mt-3 inline-block text-xs text-signal">View report →</span>
-        </LinkPreview>
+      <DocumentGrid documents={documents} />
+
+      <h2 className="mt-14 font-display text-2xl font-semibold text-ink">Flight Test Footage</h2>
+      <div className="mt-6 rounded-lg border border-line bg-surface p-4">
+        <p className="mb-3 text-sm text-body">
+          The completed system in flight, as a supplement to the presentation and report above.
+        </p>
+        <video src="/videos/high-power-rocketry/flight-test.mov" controls className="w-full rounded bg-black" />
       </div>
     </div>
   )

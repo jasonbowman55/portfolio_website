@@ -1,16 +1,17 @@
 import BackLink from '../../components/ui/BackLink'
 import Tag from '../../components/ui/Tag'
-import LinkPreview from '../../components/ui/LinkPreview'
 import ProjectCard from '../../components/ProjectCard'
+import TeamGrid from '../../components/TeamGrid'
+import DocumentGrid from '../../components/DocumentGrid'
 import ContentIntro from './content-intro.mdx'
 import ContentReflections from './content-reflections.mdx'
 import ContentTeamNote from './content-team-note.mdx'
 
 const team = [
-  { name: 'Jason Bowman (me)', linkedin: 'https://www.linkedin.com/in/jasonbbowman/' },
-  { name: 'Rebecca Preis', linkedin: 'https://www.linkedin.com/in/rebecca-preis/' },
-  { name: 'Mikayla Mann', linkedin: 'https://www.linkedin.com/in/mikayla-mann/' },
-  { name: 'Zhian Zhou', linkedin: 'https://www.linkedin.com/in/zhian-zhou-14ba8b325/' },
+  { name: 'Jason Bowman (me)', link: 'https://www.linkedin.com/in/jasonbbowman/', image: '/images/headshot.jpeg' },
+  { name: 'Rebecca Preis', link: 'https://www.linkedin.com/in/rebecca-preis/' },
+  { name: 'Mikayla Mann', link: 'https://www.linkedin.com/in/mikayla-mann/' },
+  { name: 'Zhian Zhou', link: 'https://www.linkedin.com/in/zhian-zhou-14ba8b325/' },
 ]
 
 const labs = [
@@ -20,6 +21,21 @@ const labs = [
   { title: 'Lab 4: Temperature', description: 'Integrating temperature sensors for environmental monitoring and compensation.', link: '/projects/underwater/lab4', image: '/images/underwater/lab4.jpeg' },
   { title: 'Lab 5: Acoustics', description: 'Underwater acoustic communication and sonar sensing.', link: '/projects/underwater/lab5', image: '/images/underwater/lab5.jpeg' },
   { title: 'Lab 6: Fluid Dynamics Technical Memorandum', description: 'Fluid dynamics analysis and hydrodynamic optimization.', link: '/projects/underwater/lab6', image: '/images/underwater/lab6.jpeg' },
+]
+
+const documents = [
+  {
+    title: 'Final Report',
+    description: 'Full technical report — design process, methodology, results, and analysis.',
+    href: 'https://drive.google.com/file/d/10z3bwR1xdG-XAJNYut0mEZHobPQbsdvD/view?usp=sharing',
+    cta: 'View on Drive →',
+  },
+  {
+    title: 'Final Presentation',
+    description: 'Team presentation summarizing approach, results, and lessons learned.',
+    href: 'https://drive.google.com/file/d/1SFoDq-4IOvm13Nju7Mgr_akCRxlvOkGa/view?usp=sharing',
+    cta: 'View on Drive →',
+  },
 ]
 
 export default function UnderwaterPage() {
@@ -50,23 +66,13 @@ export default function UnderwaterPage() {
       </div>
 
       <h2 className="mt-4 font-display text-2xl font-semibold text-ink">The Team</h2>
-      <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
-        {team.map((member) => (
-          <LinkPreview
-            key={member.name}
-            href={member.linkedin}
-            className="rounded-lg border border-line bg-surface p-4 text-center transition hover:border-signal/50"
-          >
-            <p className="text-sm font-medium text-ink">{member.name}</p>
-          </LinkPreview>
-        ))}
-      </div>
+      <TeamGrid members={team} />
       <div className="prose-field mt-4 text-sm">
         <ContentTeamNote />
       </div>
 
       <h2 className="mt-14 font-display text-2xl font-semibold text-ink">Laboratory Modules</h2>
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {labs.map((lab) => (
           <ProjectCard
             key={lab.title}
@@ -80,24 +86,7 @@ export default function UnderwaterPage() {
       </div>
 
       <h2 className="mt-14 font-display text-2xl font-semibold text-ink">Final Documentation</h2>
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <LinkPreview
-          href="https://drive.google.com/file/d/10z3bwR1xdG-XAJNYut0mEZHobPQbsdvD/view?usp=sharing"
-          className="rounded-lg border border-line bg-surface p-6 transition hover:border-signal/50"
-        >
-          <h3 className="font-display font-semibold text-ink">Final Report</h3>
-          <p className="mt-2 text-sm text-body">Full technical report — design process, methodology, results, and analysis.</p>
-          <span className="mt-3 inline-block text-xs text-signal">View on Drive →</span>
-        </LinkPreview>
-        <LinkPreview
-          href="https://drive.google.com/file/d/1SFoDq-4IOvm13Nju7Mgr_akCRxlvOkGa/view?usp=sharing"
-          className="rounded-lg border border-line bg-surface p-6 transition hover:border-signal/50"
-        >
-          <h3 className="font-display font-semibold text-ink">Final Presentation</h3>
-          <p className="mt-2 text-sm text-body">Team presentation summarizing approach, results, and lessons learned.</p>
-          <span className="mt-3 inline-block text-xs text-signal">View on Drive →</span>
-        </LinkPreview>
-      </div>
+      <DocumentGrid documents={documents} />
 
       <h2 className="mt-14 font-display text-2xl font-semibold text-ink">Video Documentation</h2>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
