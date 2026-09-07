@@ -52,6 +52,7 @@ function LinkedInIcon() {
 
 export default function Hero() {
   const [showResumeModal, setShowResumeModal] = useState(false)
+  const [showImageModal, setShowImageModal] = useState(false)
 
   return (
     <div>
@@ -87,12 +88,18 @@ export default function Hero() {
         </LinkPreview>
       </div>
 
-      <img
-        src="/images/hiking.jpg"
-        alt="Jason Bowman hiking in Banff National Park"
-        title="Eating applesauce from a bag on a hike with my partner in Banff National Park, Canada"
-        className="w-full max-w-xs rounded-2xl border border-line shadow-lg"
-      />
+      <button
+        onClick={() => setShowImageModal(true)}
+        className="block w-full max-w-xs cursor-zoom-in"
+        aria-label="Expand photo"
+      >
+        <img
+          src="/images/hiking.jpg"
+          alt="Jason Bowman hiking in Banff National Park"
+          title="Eating applesauce from a bag on a hike with my partner in Banff National Park, Canada"
+          className="w-full rounded-2xl border border-line shadow-lg transition hover:opacity-90"
+        />
+      </button>
 
       <p className="eyebrow mt-6 mb-2">Electrical Engineer</p>
       <h1 className="font-display text-3xl font-semibold text-ink">Jason Bowman</h1>
@@ -153,6 +160,29 @@ export default function Hero() {
                 </a>
               </div>
             </div>
+          </div>,
+          document.body
+        )}
+
+      {showImageModal &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
+            onClick={() => setShowImageModal(false)}
+          >
+            <button
+              onClick={() => setShowImageModal(false)}
+              aria-label="Close"
+              className="absolute right-4 top-4 text-2xl text-white/80 hover:text-white"
+            >
+              ✕
+            </button>
+            <img
+              src="/images/hiking.jpg"
+              alt="Jason Bowman hiking in Banff National Park"
+              className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>,
           document.body
         )}
