@@ -3,8 +3,8 @@ import PageHeader from '../components/ui/PageHeader'
 
 const hobbies = [
   {
-    title: 'Annual Spring Break Challenge',
-    description: 'Each spring break, my friends and I take on a new physical and mental challenge — from the 4x4x48 endurance run to a 135-mile bike ride across LA County.',
+    title: 'Spring Break Challenges',
+    description: 'Two spring break challenges with friends — the 4x4x48 endurance run and a 135-mile bike ride across LA County.',
     image: '/images/hobbies/collin_ket_running.jpeg',
     link: '/hobbies/annual-challenge',
     cta: 'View challenges',

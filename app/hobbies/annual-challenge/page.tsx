@@ -25,15 +25,10 @@ export default function AnnualChallengePage() {
     <div className="mx-auto max-w-[100rem] px-4 py-16">
       <BackLink href="/hobbies">Back to Hobbies</BackLink>
 
-      <p className="eyebrow mb-4">Spring Break Tradition</p>
+      <p className="eyebrow mb-4">Spring Break</p>
       <h1 className="font-display text-4xl font-semibold text-ink md:text-5xl">
-        Annual Spring Break Challenge
+        Spring Break Challenges
       </h1>
-      <p className="mt-4 max-w-2xl text-lg text-body">
-        What started as a wild idea freshman year has become an annual tradition — not for
-        competition or recognition, but to test ourselves, spend time together, and create
-        stories we'll tell for years.
-      </p>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         {challenges.map((c) => (

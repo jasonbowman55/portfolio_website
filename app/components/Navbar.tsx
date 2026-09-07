@@ -7,7 +7,7 @@ import LinkPreview from './ui/LinkPreview'
 const LINKS = [
   { href: '/', label: 'Home' },
   { href: '/hobbies', label: 'Hobbies' },
-  { href: '/references', label: 'References' },
+  { href: '/references', label: 'Academic References' },
   { href: '/about', label: 'About' },
 ]
 

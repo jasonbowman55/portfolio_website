@@ -13,7 +13,7 @@ export default function Footer() {
             <p className="eyebrow mb-3">Site</p>
             <ul className="space-y-2 text-sm">
               <li><a href="/hobbies" className="text-body hover:text-signal">Hobbies</a></li>
-              <li><a href="/references" className="text-body hover:text-signal">References</a></li>
+              <li><a href="/references" className="text-body hover:text-signal">Academic References</a></li>
               <li><a href="/about" className="text-body hover:text-signal">About</a></li>
             </ul>
           </div>

@@ -62,7 +62,7 @@ export default function ReferencesPage() {
             Harvey Mudd College
           </LinkPreview>
         }
-        title="References"
+        title="Academic References"
         subtitle="Professors and mentors from my undergraduate work who can speak to it firsthand."
       />
 
