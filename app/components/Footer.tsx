@@ -1,7 +1,5 @@
 import LinkPreview from './ui/LinkPreview'
 
-const RESUME_VIEW_URL =
-  'https://drive.google.com/file/d/19213KDBQJlmCxcuwsBsXrRoW5R6eXiIx/view?usp=sharing'
 const BOOKING_URL = 'https://calendar.app.google/qJeWnp1q5eKKSXFg7'
 
 export default function Footer() {
@@ -27,9 +25,14 @@ export default function Footer() {
                 </a>
               </p>
               <p>
-                <LinkPreview href={RESUME_VIEW_URL} className="text-body hover:text-signal">
+                <a
+                  href="/Jason_Bowman_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-body hover:text-signal"
+                >
                   Résumé
-                </LinkPreview>
+                </a>
               </p>
               <p>
                 <LinkPreview href={BOOKING_URL} className="text-body hover:text-signal">

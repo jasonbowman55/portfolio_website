@@ -5,9 +5,8 @@ import { createPortal } from 'react-dom'
 import HeroBio from './hero-bio.mdx'
 import LinkPreview from './ui/LinkPreview'
 
-const RESUME_FILE_ID = '19213KDBQJlmCxcuwsBsXrRoW5R6eXiIx'
-const RESUME_VIEW_URL = `https://drive.google.com/file/d/${RESUME_FILE_ID}/view?usp=sharing`
-const RESUME_DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`
+const RESUME_PATH = '/Jason_Bowman_Resume.pdf'
+const RESUME_VIEW_URL = `https://jasonbowman.vercel.app${RESUME_PATH}`
 const BOOKING_URL = 'https://calendar.app.google/qJeWnp1q5eKKSXFg7'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/jasonbbowman/'
 const EMAIL = 'jasonbowman555@gmail.com'
@@ -139,7 +138,8 @@ export default function Hero() {
               </div>
               <div className="flex flex-wrap gap-3 border-t border-line p-6">
                 <a
-                  href={RESUME_DOWNLOAD_URL}
+                  href={RESUME_PATH}
+                  download="Jason_Bowman_Resume.pdf"
                   className="inline-block rounded-lg bg-signal px-6 py-3 font-medium text-[#17130f] transition hover:bg-signal-hover"
                 >
                   Download PDF
@@ -151,12 +151,12 @@ export default function Hero() {
                   Email it to someone
                 </a>
                 <a
-                  href={RESUME_VIEW_URL}
+                  href={RESUME_PATH}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block rounded-lg border border-line bg-surface px-6 py-3 font-medium text-ink transition hover:border-signal/50"
                 >
-                  Open in Google Drive
+                  Open full PDF
                 </a>
               </div>
             </div>
